@@ -1,6 +1,7 @@
 # GLaDOS-CheckIn
+# Telegram被本人注释掉了 有github注册邮箱的失败提示
 
-GLaDOS 自动签到与提示 —— 基于Github Action与Telegram Bot  
+GLaDOS 自动签到与提示 —— 基于Github Action与Telegram Bot 
 注：简单修改后也适用于云函数  
 
 所有的套餐数据存放在budget.json中，若有不符请根据原始数据修改  
