@@ -18,6 +18,8 @@ class GLaDOS_CheckIn:
         self._chat_id: str = chat_id
 
     def _send_msg(self, msg: str):
+        print(msg)
+        print('开始发送telegram提示...')
         bot = telegram.Bot(token=self._bot_token)
         bot.send_message(self._chat_id, msg)
 
@@ -25,11 +27,11 @@ class GLaDOS_CheckIn:
         self._send_msg(
             '--------------------\n'
             'GLaDOS CheckIn\n'
-            'Msg: ' + msg + '\n' +
-            'Plan: ' + plan + ' Plan\n' +
+            'Msg:       ' + msg + '\n' +
+            'Plan:      ' + plan + ' Plan\n' +
             'Left days: ' + str(left_days) + '\n' +
-            'Usage: ' + '%.3f' % used_gb + 'GB\n' +
-            'Total: ' + str(total_gb) + 'GB\n' +
+            'Usage:     ' + '%.3f' % used_gb + 'GB\n' +
+            'Total:     ' + str(total_gb) + 'GB\n' +
             '--------------------'
         )
 
