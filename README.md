@@ -1,4 +1,4 @@
-# GLaDOS-CheckIn
+# GLaDOS-CheckIn 
 # Telegram被本人注释掉了 有github注册邮箱的失败提示 
 
 GLaDOS 自动签到与提示 —— 基于Github Action与Telegram Bot 
