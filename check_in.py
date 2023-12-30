@@ -7,7 +7,7 @@ import requests
 
 
 class GLaDOS_CheckIn:
-    _HOST = "glados.network"
+    _HOST = "glados.rocks"
     _ORIGIN_URL = f"https://{_HOST}"
     _UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
     _BUDGET_DATA_PATH = "budget.json"
@@ -70,7 +70,7 @@ class GLaDOS_CheckIn:
         check_in_url = f"{self._ORIGIN_URL}/api/user/checkin"
         referer_url = f"{self._ORIGIN_URL}/console/checkin"
 
-        payload = {'token': 'glados.network'}
+        payload = {'token': 'glados.one'}
 
         with requests.post(
                 check_in_url,
