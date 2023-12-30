@@ -22,12 +22,11 @@ class GLaDOS_CheckIn:
         print(msg)
         print('开始发送telegram提示...')
         bot = telegram.Bot(token=self._bot_token)
-        async with bot:
-            print(await bot.get_me())
-            bot.send_message(chat_id=self._chat_id, text=msg)
+        print(await bot.get_me())
+        await bot.send_message(chat_id=self._chat_id, text=msg)
 
-    def _report_success(self, msg: str, left_days: int, plan: str, used_gb: float, total_gb: int):
-        await self._send_msg(
+    async def _report_success(self, msg: str, left_days: int, plan: str, used_gb: float, total_gb: int):
+        self._send_msg(
             '-----------------------------\n'
             'GLaDOS CheckIn\n'
             'Msg:       ' + msg + '\n' +
@@ -38,7 +37,7 @@ class GLaDOS_CheckIn:
             '-----------------------------'
         )
 
-    def _report_cookies_expired(self):
+    async def _report_cookies_expired(self):
         self._send_msg(
             '-----------------------------\n'
             'GLaDOS CheckIn\n'
@@ -46,7 +45,7 @@ class GLaDOS_CheckIn:
             '-----------------------------'
         )
 
-    def _report_checkin_error(self, msg: str):
+    async def _report_checkin_error(self, msg: str):
         self._send_msg(
             '-----------------------------\n'
             'GLaDOS CheckIn\n'
