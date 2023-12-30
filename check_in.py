@@ -3,25 +3,25 @@ from typing import Optional
 
 import json
 import requests
-# import telegram
+import telegram
 
 
 class GLaDOS_CheckIn:
     _HOST = "glados.rocks"
     _ORIGIN_URL = f"https://{_HOST}"
-    _UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
+    _UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     _BUDGET_DATA_PATH = "budget.json"
 
     def __init__(self, cookies: str, bot_token: str, chat_id: str):
         self._cookies: str = cookies
-#         self._bot_token: str = bot_token
-#         self._chat_id: str = chat_id
+        self._bot_token: str = bot_token
+        self._chat_id: str = chat_id
 
     def _send_msg(self, msg: str):
         print(msg)
-#         print('开始发送telegram提示...')
-#         bot = telegram.Bot(token=self._bot_token)
-#         bot.send_message(self._chat_id, msg)
+        print('开始发送telegram提示...')
+        bot = telegram.Bot(token=self._bot_token)
+        bot.send_message(self._chat_id, msg)
 
     def _report_success(self, msg: str, left_days: int, plan: str, used_gb: float, total_gb: int):
         self._send_msg(
@@ -110,6 +110,7 @@ class GLaDOS_CheckIn:
     def _check_in(self):
         check_in_response = self._api_check_in()
         check_in_msg = check_in_response['message']
+        print(check_in_msg)
 
         if check_in_msg == '\u6ca1\u6709\u6743\u9650':
             self._report_cookies_expired()
