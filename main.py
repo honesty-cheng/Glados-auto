@@ -23,4 +23,4 @@ async def checkIn():
 
 
 if __name__ == '__main__':
-    checkIn()
+    asyncio.run(checkIn())
