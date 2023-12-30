@@ -133,7 +133,7 @@ class GLaDOS_CheckIn:
 
     async def run(self):
         try:
-            self._check_in()
+            await self._check_in()
         except BaseException as be:
             # self._report_checkin_error(traceback.format_exc())
             await self._report_checkin_error(be)
