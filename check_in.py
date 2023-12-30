@@ -27,7 +27,7 @@ class GLaDOS_CheckIn:
             bot.send_message(chat_id=self._chat_id, text=msg)
 
     def _report_success(self, msg: str, left_days: int, plan: str, used_gb: float, total_gb: int):
-        self._send_msg(
+        await self._send_msg(
             '-----------------------------\n'
             'GLaDOS CheckIn\n'
             'Msg:       ' + msg + '\n' +
