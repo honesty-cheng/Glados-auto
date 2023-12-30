@@ -4,6 +4,7 @@ from typing import Optional
 import json
 import requests
 import telegram
+import asyncio
 
 
 class GLaDOS_CheckIn:
@@ -17,11 +18,13 @@ class GLaDOS_CheckIn:
         self._bot_token: str = bot_token
         self._chat_id: str = chat_id
 
-    def _send_msg(self, msg: str):
+    async def _send_msg(self, msg: str):
         print(msg)
         print('开始发送telegram提示...')
         bot = telegram.Bot(token=self._bot_token)
-        bot.send_message(self._chat_id, msg)
+        async with bot:
+            print(await bot.get_me())
+            bot.send_message(chat_id=self._chat_id, text=msg)
 
     def _report_success(self, msg: str, left_days: int, plan: str, used_gb: float, total_gb: int):
         self._send_msg(
