@@ -26,7 +26,7 @@ class GLaDOS_CheckIn:
         await bot.send_message(chat_id=self._chat_id, text=msg)
 
     async def _report_success(self, msg: str, left_days: int, plan: str, used_gb: float, total_gb: int):
-        self._send_msg(
+        await self._send_msg(
             '-----------------------------\n'
             'GLaDOS CheckIn\n'
             'Msg:       ' + msg + '\n' +
@@ -38,7 +38,7 @@ class GLaDOS_CheckIn:
         )
 
     async def _report_cookies_expired(self):
-        self._send_msg(
+        await self._send_msg(
             '-----------------------------\n'
             'GLaDOS CheckIn\n'
             'Msg: Your cookies are expired!\n'
@@ -46,7 +46,7 @@ class GLaDOS_CheckIn:
         )
 
     async def _report_checkin_error(self, msg: str):
-        self._send_msg(
+        await self._send_msg(
             '-----------------------------\n'
             'GLaDOS CheckIn\n'
             'Msg: Check in error!\n'
@@ -115,7 +115,7 @@ class GLaDOS_CheckIn:
         print(check_in_msg)
 
         if check_in_msg == '\u6ca1\u6709\u6743\u9650':
-            self._report_cookies_expired()
+            await self._report_cookies_expired()
             return
 
         status_response = self._api_status()
@@ -129,10 +129,11 @@ class GLaDOS_CheckIn:
         total_gb = user_budget['budget']
         plan = user_budget['level']
 
-        self._report_success(check_in_msg, left_days, plan, used_gb, total_gb)
+        await self._report_success(check_in_msg, left_days, plan, used_gb, total_gb)
 
     async def run(self):
         try:
             self._check_in()
-        except BaseException:
-            self._report_checkin_error(traceback.format_exc())
+        except BaseException as be:
+            # self._report_checkin_error(traceback.format_exc())
+            await self._report_checkin_error(be)
