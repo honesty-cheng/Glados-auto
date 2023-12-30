@@ -109,7 +109,7 @@ class GLaDOS_CheckIn:
                 raise EnvironmentError(
                     f'Budget info not found for this user! VIP: {vip_level}')
 
-    def _check_in(self):
+    async def _check_in(self):
         check_in_response = self._api_check_in()
         check_in_msg = check_in_response['message']
         print(check_in_msg)
@@ -131,7 +131,7 @@ class GLaDOS_CheckIn:
 
         self._report_success(check_in_msg, left_days, plan, used_gb, total_gb)
 
-    def run(self):
+    async def run(self):
         try:
             self._check_in()
         except BaseException:
