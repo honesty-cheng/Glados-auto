@@ -19,7 +19,7 @@ async def checkIn():
         raise EnvironmentError('Environment BOT_TOKEN not found!')
     if CHAT_ID is None:
         raise EnvironmentError('Environment CHAT_ID not found!')
-    GLaDOS_CheckIn(COOKIES, BOT_TOKEN, CHAT_ID).run()
+    await GLaDOS_CheckIn(COOKIES, BOT_TOKEN, CHAT_ID).run()
 
 
 if __name__ == '__main__':
